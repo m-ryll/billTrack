@@ -1,10 +1,31 @@
+/*
+	COLOR PALETTE
+	lightest to darkest
+	bg: #a9ccd4
+	#70acba
+	#4d8f9e
+	#3c7d8c
+	#3a6b7f
+*/
+
 * {
 	padding: 0;
 	margin: 0;
 }
+body {
+	font-family: 'Lato', sans-serif;
+}
 header {
-	width: 100%;
-	border-bottom: 1px solid black;
+	width: 100vw;
+	height: 99px;
+	background: #4D8F9E;
+}
+
+#container {
+	width: 100vw;
+	height: 100vh;
+	background-color: #a9ccd4;
+	position: relative;
 }
 
 #imgTemp {
@@ -12,11 +33,14 @@ header {
 	height: 100px;
 	background-color: white;
 	display: inline-block;
-	border: 1px solid black;
 }
 
 #pageTitle {
 	display: inline;
+	color: white;
+	position: absolute;
+	font-size: 40pt;
+	margin: 15px 0 0 15px;
 }
 
 #userMenuTemp {
@@ -24,14 +48,17 @@ header {
 	display: inline;
 }
 
-#container {
-	width: 100%;
-	position: relative;
-}
-
 #sidebar {
+	position: absolute;
 	width: 250px;
-	border: 1px solid black;
-	height: 100%;
+	background-color: #4D8F9E;
+	top: 100px;
+	bottom: 0;
 }
 
+#sidebar li {
+	background-color: yellow;
+	text-align: center;
+	left: 50%;
+	padding: 45px 0;
+}
