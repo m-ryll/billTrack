@@ -57,8 +57,17 @@ header {
 }
 
 #sidebar li {
-	background-color: yellow;
+	list-style-type: none;
 	text-align: center;
 	left: 50%;
 	padding: 45px 0;
+	color: white;
+	font-size: 16pt;
+	background-color: #4D8F9E;
+}
+#sidebar li:hover {
+	cursor: pointer;
+}
+#sidebar li .active {
+	background-color: #a9ccd4;
 }
