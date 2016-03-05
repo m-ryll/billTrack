@@ -13,6 +13,14 @@ function bill(){
 	var date;
 	var name;
 }
+
+function getUser(){
+	var user = "";
+
+	return user;
+}
+
+
 // returns the 'average of [type]' bill cost
 function average(myarray){
 	var size = myarray.length;
@@ -24,8 +32,11 @@ function average(myarray){
 }
 
 function addbill(){
-	var prompt = window.prompt("What type of bill would you like to add?");
-	var prompt2 = window.prompt("You would like to add an " + prompt + " bill.");
+	var bill_type;
+	var date;
+	var cost;
+	var custom;
+	var name;
 }
 
 
@@ -53,8 +64,7 @@ function init() {
 	user1.bills.push(bill1, bill2, bill3);
 	average(user1.bills);*/
 
-	document.querySelector("#add").onclick = addbill;
-	//addbill();
+	//document.querySelector("#add").onclick = addbill;
 
 
 
