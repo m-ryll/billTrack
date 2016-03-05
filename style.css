@@ -1,0 +1,37 @@
+* {
+	padding: 0;
+	margin: 0;
+}
+header {
+	width: 100%;
+	border-bottom: 1px solid black;
+}
+
+#imgTemp {
+	width: 250px;
+	height: 100px;
+	background-color: white;
+	display: inline-block;
+	border: 1px solid black;
+}
+
+#pageTitle {
+	display: inline;
+}
+
+#userMenuTemp {
+	float: right;
+	display: inline;
+}
+
+#container {
+	width: 100%;
+	position: relative;
+}
+
+#sidebar {
+	width: 250px;
+	border: 1px solid black;
+	height: 100%;
+}
+
