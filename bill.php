@@ -1,24 +1,17 @@
-<!DOCTYPE html>
+<!DOCUMENT html>
 <html lang="en">
 	<head>
-		<title>Bill Track</title>
+		<title>greentility</title>
 		<meta charset="utf-8" />
 		<link rel="stylesheet" type="text/css" href="style.css" />
 		<link href='https://fonts.googleapis.com/css?family=Lato:400,700,400italic' rel='stylesheet' type='text/css'>	
 		<link href='https://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
 		<script type="text/javascript" src="https://www.parsecdn.com/js/parse-1.4.2.min.js"></script>		
-		<script type="text/javascript" src="script.js"></script>
+		<script src="script.js"></script>
 		<script type="text/javascript">
-			function indexInit() {
+			function BillInit() {
 				Parse.initialize("FsgP7xe2NyaWPGWQocZBErGeHZgTrQg6ohYAx4BX", "D2KxvroTInGt3aW4SEmovGOTr8U6x1BksU6Jhpiw");
-				var logOutButton = document.querySelector("#logOutButton");
 				var currentUser = Parse.User.current();
-				logOutButton.onclick = function(){
-					Parse.User.logOut();
-					window.location.href = "./home.html";
-					console.log("clicked!");
-				}; 
-
 				var myBills = Parse.Object.extend("Bills");
 	            var query = new Parse.Query(myBills);
 	            query.equalTo("userId", currentUser.id);
@@ -42,7 +35,8 @@
 					}
 				});
 			}
-			window.onload = indexInit;
+
+			window.onload = BillInit;
 		</script>
 	</head>
 	<body>
@@ -51,19 +45,21 @@
                 <h2>greentility</h2>
             </div>
 			<header>
-				<p id="pageTitle">Dashboard</p>
+				<p id="pageTitle">Add a new bill</p>
 				<p id="logOutButton">Log Out</p>
 			</header>
 			<div id="sidebar">
 				<ul>
-					<li class="active">Dashboard</li>
+					<li><a href="index.html">Dashboard</a></li>
 					<li id="newBill"><a href="addbill.html">Add a new bill</a></li>
 				</ul>
 			</div>
 			<div id="main">
-				
+				<?php
+				// The value of the variable name is found
+				echo "<h1>id: " . $_GET["id"] . "</h1>";
+				?>
 			</div>
 		</div>
-
 	</body>
 </html>

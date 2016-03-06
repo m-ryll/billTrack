@@ -67,7 +67,7 @@
 							var sidebarList = document.querySelector("#sidebar ul");
 							var newListItem = document.createElement("li");
 							var newLinkItem = document.createElement("a");
-							newLinkItem.setAttribute("href", "./bill.html");
+							newLinkItem.setAttribute("href", "./bill.php?id=" + object.id);
 							var newText = document.createTextNode(object.get("name"));
 							newLinkItem.appendChild(newText);
 							newListItem.appendChild(newLinkItem);
