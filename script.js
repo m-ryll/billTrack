@@ -1,3 +1,5 @@
+
+
 // JOSHY TYPE HERE
 
 
@@ -39,7 +41,58 @@ function addbill(){
 	var name;
 }
 
+function handleError(error, message) {
+    setTimeout(function() {
+        error.textContent = message;
+    }, 200);
+}
 
+function handleSignup(signupForm) {
+    var username = signupForm.querySelector("input[name=username]");
+    var passOne = signupForm.querySelector("input[name=password]");
+    var passTwo = signupForm.querySelector("input[name=confirmPassword]");
+    var email = signupForm.querySelector("input[name=email]");
+    var error = signupForm.querySelector(".error");
+
+    error.textContent = "";
+
+    if (!username.value || username.value == "" ||
+        !passOne.value || passOne.value == "" ||
+        !passTwo.value || passTwo.value == "") {
+        handleError(error, "Both username and passwords are required");
+        return false;
+    }
+
+    if (passOne.value !== passTwo.value) {
+        handleError(error, "Passwords do not match.");
+        return false;
+    }
+
+    if (email.value.indexOf("@") == -1){
+    	handleError(error, "Must enter a valid email address.");
+    }
+
+    var user = new Parse.User();
+    user.set("username", username.value);
+    user.set("password", passOne.value);
+    user.set("email", email.value);
+
+    user.signUp(null, {
+        success: function(user) {
+            window.location.href = "./index.html";
+        },
+        error: function(user, errorRes) {
+            if (errorRes.code === Parse.Error.USERNAME_TAKEN) {
+                console.dir(errorRes);
+                handleError(error, "Username already taken");
+            } else {
+                var msg = "We failed to create you account. Please try again later";
+                handleError(error, msg);
+            }
+        }
+    });
+
+} //end of handleSignup
 
 function init() {
 	// test data
@@ -65,10 +118,7 @@ function init() {
 	average(user1.bills);*/
 
 	//document.querySelector("#add").onclick = addbill;
-
-
-
-	
+  	
 }
 
 window.onload = init;

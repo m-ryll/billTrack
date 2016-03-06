@@ -4,85 +4,30 @@
 		<title>greenify</title>
 		<meta charset="utf-8" />
 		<link rel="stylesheet" type="text/css" href="style.css" />
-		<link href='https://fonts.googleapis.com/css?family=Lato:400,700,400italic' rel='stylesheet' type='text/css'>		
-		<script src="script.js">
+		<link href='https://fonts.googleapis.com/css?family=Lato:400,700,400italic' rel='stylesheet' type='text/css'>	
+        <script type="text/javascript" src="https://www.parsecdn.com/js/parse-1.4.2.min.js"></script>	
+		<script src="script.js"></script>
+        <script type="text/javascript">
+            function thisInit() {
+                var signupForm = document.querySelector("#signupForm");
+                var signupSubmit = document.querySelector("#signupSubmit");
+                
+                Parse.initialize("FsgP7xe2NyaWPGWQocZBErGeHZgTrQg6ohYAx4BX", "D2KxvroTInGt3aW4SEmovGOTr8U6x1BksU6Jhpiw");
 
-		function handleError(error, message) {
-            setTimeout(function() {
-                error.textContent = message;
-            }, 200);
-        }
-        
-        function handleSignup(signupForm) {
-            var username = signupForm.querySelector("input[name=username]");
-            var passOne = signupForm.querySelector("input[name=password]");
-            var passTwo = signupForm.querySelector("input[name=confirmPassword]");
-            var email = signupForm.querySelector("input[name=email]");
-            var error = signupForm.querySelector(".error");
-
-            error.textContent = "";
-
-            if (!username.value || username.value == "" ||
-                !passOne.value || passOne.value == "" ||
-                !passTwo.value || passTwo.value == "") {
-                handleError(error, "Both username and passwords are required");
-                return false;
-            }
-
-            if (passOne.value !== passTwo.value) {
-                handleError(error, "Passwords do not match");
-                return false;
-            }
-
-            if (email.value.indexOf("@") == -1){
-            	handleError(error, "Must enter a valid email address.");
-            }
-
-            var user = new Parse.User();
-            user.set("username", username.value);
-            user.set("password", passOne.value);
-
-            user.signUp(null, {
-                success: function(user) {
+                var currentUser = Parse.User.current();
+                if (currentUser) {
                     window.location.href = "./index.html";
-                },
-                error: function(user, errorRes) {
-                    if (errorRes.code === Parse.Error.USERNAME_TAKEN) {
-                        console.dir(errorRes);
-                        handleError(error, "Username already taken");
-                    } else {
-                        var msg = "We failed to create you account. Please try again later";
-                        handleError(error, msg);
-                    }
                 }
-            });
 
-        } //end of handleSignup
-
-      
-        function SignupInit() {
-            var signupForm = document.querySelector("#signupForm");
-            var signupSubmit = document.querySelector("#signupSubmit");
-            
-            Parse.initialize("FsgP7xe2NyaWPGWQocZBErGeHZgTrQg6ohYAx4BX", "D2KxvroTInGt3aW4SEmovGOTr8U6x1BksU6Jhpiw");
-
-            var currentUser = Parse.User.current();
-            if (currentUser) {
-                window.location.href = "./index.html";
+                signupSubmit.addEventListener("click", function(e) {
+                    handleSignup(signupForm);
+                    e.preventDefault();
+                    return false;
+                });
             }
 
-            signupSubmit.addEventListener("click", function(e) {
-                handleSignup(signupForm);
-                e.preventDefault();
-                return false;
-            });
-            
-        }
-
-        window.onload = SignupInit;
-
-
-		</script>
+            window.onload = thisInit;
+        </script>
 	</head>
 	<body>
 		<div id="container">
@@ -95,7 +40,7 @@
 					<input type="text" name="password" placeholder="Password" /><br />
 					<input type="text" name="confirmPassword" placeholder="Confirm Password" /><br />
 					<p class="error"></p>
-					<a class="button" id="signup" href="index.html">Sign up</a>
+					<input type="submit" id="signupSubmit" value="Sign Up" />
 				</form>
 			</div>
 		</div>
