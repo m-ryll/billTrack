@@ -5,6 +5,7 @@
 		<meta charset="utf-8" />
 		<link rel="stylesheet" type="text/css" href="style.css" />
 		<link href='https://fonts.googleapis.com/css?family=Lato:400,700,400italic' rel='stylesheet' type='text/css'>	
+        <link href='https://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
         <script type="text/javascript" src="https://www.parsecdn.com/js/parse-1.4.2.min.js"></script>	
 		<script src="script.js"></script>
         <script type="text/javascript">
@@ -30,19 +31,38 @@
         </script>
 	</head>
 	<body>
-		<div id="container">
-			<div id="centered">
-				<form id="signupForm" action="#" method="POST">
-					<h1>Sign up</h1>
-					<input type="text" name="name" placeholder="Full Name" /><br />
-					<input type="text" name="username" placeholder="Username" /><br />
-					<input type="text" name="email" placeholder="Email" /><br />
-					<input type="password" name="password" placeholder="Password" /><br />
-					<input type="password" name="confirmPassword" placeholder="Confirm Password" /><br />
-					<p class="error"></p>
-					<input type="submit" id="signupSubmit" value="Sign Up" />
-				</form>
-			</div>
-		</div>
+        <div id="container">
+            <div id="logo">
+                <h2>greentility</h2>
+            </div>
+            <header>
+                <ul id="homeMenu">
+                    <li><a href="#">Features</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+                <ul id="homeButtons">
+                    <li><a class="activeLink" href="signup.html">Sign Up</a></li>
+                    <li><a href="login.html">Log In</a></li>
+                </ul>
+            </header>
+            <div id="centered">
+                <form id="signupForm" action="#" method="POST">
+                    <h1>Let's get started.</h1>
+                    <label for="name">Name</label>
+                    <input type="text" name="name" /><br />
+                    <label for="username">Username</label>
+                    <input type="text" name="username" /><br />
+                    <label for="email">Email</label>
+                    <input type="text" name="email" /><br />
+                    <label for="password">Password</label>
+                    <input type="password" name="password" /><br />
+                    <label for="confirmPassword">Confirm password</label>
+                    <input type="password" name="confirmPassword" /><br />
+                    <p class="error"></p>
+                    <input type="submit" id="signupSubmit" value="Create Account" />
+                </form>
+            </div>
+        </div>
 	</body>
 </html>

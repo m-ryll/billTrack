@@ -5,25 +5,99 @@
 		<meta charset="utf-8" />
 		<link rel="stylesheet" type="text/css" href="style.css" />
 		<link href='https://fonts.googleapis.com/css?family=Lato:400,700,400italic' rel='stylesheet' type='text/css'>	
+		<link href='https://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
 		<script type="text/javascript" src="https://www.parsecdn.com/js/parse-1.4.2.min.js"></script>		
 		<script src="script.js"></script>
+		<script type="text/javascript">
+	        function handleAddBill(AddBillForm) {
+	            var billType = AddBillForm.querySelector("select[name=type]").value;
+	            var billName = AddBillForm.querySelector("input[name=name]").value;
+
+	            if(billName == ""){
+	            	billName = billType;
+	            }
+
+	            console.log("info: " + billName + " " + billType);
+	            var Bills = Parse.Object.extend("Bills");
+	            var myBills = new Bills();
+	            myBills.set("name", billName);
+	            myBills.set("type", billType);
+	            myBills.set("userId", Parse.User.current().id);
+
+	            myBills.save(null, {
+					success: function(myBills) {
+						// Execute any logic that should take place after the object is saved.
+						console.log("saved!!");
+						window.location.href="./index.html";
+					},
+					error: function(myBills, error) {
+						// Execute any logic that should take place if the save fails.
+						// error is a Parse.Error with an error code and message.
+						console.log('Failed to create new object, with error code: ' + error.message);
+					}
+				});
+	        }
+
+	        function AddBillInit() {
+	            var AddBillForm = document.querySelector("#addBillForm");
+	            var AddBillSubmit = document.querySelector("#addBillSubmit");
+	            
+	            Parse.initialize("FsgP7xe2NyaWPGWQocZBErGeHZgTrQg6ohYAx4BX", "D2KxvroTInGt3aW4SEmovGOTr8U6x1BksU6Jhpiw");
+
+	            var currentUser = Parse.User.current();
+
+	            if (!currentUser) {
+	                window.location.href = "./home.html";
+	            }
+
+	            AddBillSubmit.addEventListener("click", function(e) {
+	                handleAddBill(AddBillForm);
+	                e.preventDefault();
+	                return false;
+	            });
+
+	            var myBills = Parse.Object.extend("Bills");
+	            var query = new Parse.Query(myBills);
+	            query.equalTo("userId", currentUser.id);
+				query.find({
+					success: function(results) {
+						// Do something with the returned Parse.Object values
+						for (var i = 0; i < results.length; i++) {
+							var object = results[i];
+							var sidebarList = document.querySelector("#sidebar ul");
+							var newListItem = document.createElement("li");
+							var newText = document.createTextNode(object.get("name"));
+							newListItem.appendChild(newText);
+							sidebarList.insertBefore(newListItem, document.querySelector("#newBill"));
+
+						}
+					},
+					error: function(error) {
+						alert("Error: " + error.code + " " + error.message);
+					}
+				});
+	        }
+	        window.onload = AddBillInit;
+		</script>
 	</head>
 	<body>
 		<div id="container">
+			<div id="logo">
+                <h2>greentility</h2>
+            </div>
 			<header>
-				<div id="imgTemp"></div>
 				<p id="pageTitle">Add a new bill</p>
-				<p id="userMenuTemp">user menu</p>
+				<p id="logOutButton">Log Out</p>
 			</header>
 			<div id="sidebar">
 				<ul>
 					<li><a href="index.html">Dashboard</a></li>
-					<li class="active">Add a new bill</li>
+					<li id="newBill" class="active">Add a new bill</li>
 				</ul>
 			</div>
 			<div id="main">
 				<form id="addBillForm" action="#" method="POST">
-					<label for="type">Bill Type:</label>
+					<label for="type">Bill Type:</label><br />
 					<select name="type">
 						<option value="Electric">Electric</option>
 						<option value="Gas">Gas</option>
@@ -34,9 +108,9 @@
 						<option value="Loan">Loan</option>
 						<option value="Other">Other</option>
 					</select><br />
-					<label for="name">Name:<label>
-					<input type="text" name="name">
-					<input type="submit" value="Create Bill" />
+					<label for="name">Name:<label><br />
+					<input type="text" name="name" /><br />
+					<input id="addBillSubmit" type="submit" value="Create Bill" />
 				</form>
 			</div>
 		</div>

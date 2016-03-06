@@ -5,6 +5,7 @@
 		<meta charset="utf-8" />
 		<link rel="stylesheet" type="text/css" href="style.css" />
 		<link href='https://fonts.googleapis.com/css?family=Lato:400,700,400italic' rel='stylesheet' type='text/css'>	
+		<link href='https://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
 		<script type="text/javascript" src="https://www.parsecdn.com/js/parse-1.4.2.min.js"></script>		
 		<script type="text/javascript" src="script.js"></script>
 		<script type="text/javascript">
@@ -14,7 +15,7 @@
 	            }, 200);
 	        }
       
-        function handleLogin(LoginForm) {
+        function handleLogin(loginForm) {
             var username = loginForm.querySelector("input[name=login]");
             var passOne = loginForm.querySelector("input[name=password]");
             var error = loginForm.querySelector(".error");
@@ -59,11 +60,27 @@
 	</head>
 	<body>
 		<div id="container">
+			<div id="logo">
+                <h2>greentility</h2>
+            </div>
+	        <header>
+	            <ul id="homeMenu">
+	                <li><a href="#">Features</a></li>
+	                <li><a href="#">About</a></li>
+	                <li><a href="#">Contact</a></li>
+	            </ul>
+	            <ul id="homeButtons">
+	                <li><a href="signup.html">Sign Up</a></li>
+	                <li><a class="activeLink" href="login.html">Log In</a></li>
+	            </ul>
+	        </header>
 			<div id="centered">
 				<h1>Log In</h1>
 				<form id="loginForm" action"#" method="POST">
-					<input type="text" name="login" placeholder="Email or Username" /><br />
-					<input type="password" name="password" placeholder="Password" /><br />
+					<label for="login">Email or Username</label>
+					<input type="text" name="login" /><br />
+					<label for="password">Password</label>
+					<input type="password" name="password" /><br />
 					<p class="error"></p>
 					<input id="loginSubmit" type="submit" value="Log In">
 				</form>

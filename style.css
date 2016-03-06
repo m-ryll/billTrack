@@ -5,24 +5,56 @@
 body {
 	font-family: 'Lato', sans-serif;
 }
+#logo {
+	width: 20%;
+	height: 100px;
+	background-color: #A6CE95;
+	float: left;
+	text-align: center;
+}
+#logo h2 {
+	color: #35794B;
+	font-family: 'Lobster', cursive;
+	font-size: 35pt;
+	margin-top: 15px;
+}
 header {
-	width: 100vw;
+	width: 80%;
 	height: 100px;
 	background: #35794B;
+	float: right;
 }
-#homeMenu {
+#homeMenu, #homeButtons {
 	display: inline;
-	position: absolute;
+	float: left;
 }
-#homeMenu li {
+#homeMenu li, #homeButtons li {
 	display: inline;
 	list-style-type: none;
-	margin: 20px 20px;
 }
-#homeMenu li a {
+#homeMenu li a, #homeButtons li a {
 	text-decoration: none;
 	color: white;
 	font-size: 14pt;
+	display: inline-block;
+	padding: 39px;
+}
+#homeMenu li a:hover, #homeButtons li a:hover, #logOutButton:hover {
+	background-color: #234214;
+	transition: background-color .3s ease;
+}
+#homeButtons {
+	float: right;
+}
+#logOutButton {
+	color: white;
+	cursor: pointer;
+	float: right;
+	font-size: 14pt;
+	padding: 39px;
+}
+.activeLink {
+	background-color: #234214;
 }
 .button {
 	display: inline;
@@ -33,35 +65,61 @@ header {
 	background-color: #e0efdd;
 	padding: 5px 25px;
 }
-input[type="text"] {
-	border: none;
+label {
+	margin-bottom: 5px;
+	display: inline-block;
+}
+input[type="text"], input[type="password"] {
 	border-radius: 5px;
 	padding: 5px;
-	margin-bottom: 5px;
-	width: 90%;
+	margin-bottom: 10px;
+	width: 100%;
+	font-family: 'Lato', sans-serif;
+	font-size: 13pt;
+	border: 2px solid #A6CE95;
 }
-inputs[name="name"]
-
+input[type="text"]:hover, input[type="password"]:hover, input[type="text"]:focus, input[type="password"]:focus {
+	outline: none;
+	border: 2px solid #35794B;
+}
+input[type="submit"] {
+	background: #35794B;
+	border-radius: 5px;
+	color: #e0efdd;
+	padding: 5px;
+	font-family: 'Lato', sans-serif;
+	border: none;
+	font-size: 13pt;
+	width: 200px;
+	margin: 10px auto;
+	display: block;
+	cursor: pointer;
+	box-shadow: 0 3px 0px #234214;
+}
+input[type="submit"]:active {
+	transform: translateY(3px);
+	box-shadow: none;
+}
+input[type="submit"]:focus {
+	outline: none;
+}
 #centered {
 	position: absolute;
 	left: 50%;
-	top: 50%;
-	transform: translateX(-50%) translateY(-50%);
-	background-color: #35794B;
-	padding: 20px 100px;
-	color: #e0efdd;
+	top: 150px;
+	transform: translateX(-50%);
+	color: #35794B;
+	width: 450px;
+}
+#centered h1 {
+	color: #35794B;
+	text-align: center;
 }
 #container {
 	width: 100vw;
 	height: 100vh;
 	background-color: #e0efdd;
 	position: relative;
-}
-#imgTemp {
-	width: 250px;
-	height: 100px;
-	background-color: #e0efdd;
-	display: inline-block;
 }
 #pageTitle {
 	display: inline;
@@ -76,7 +134,7 @@ inputs[name="name"]
 }
 #sidebar {
 	position: absolute;
-	width: 250px;
+	width: 20%;
 	background-color: #35794B;
 	top: 100px;
 	bottom: 0;
@@ -89,6 +147,7 @@ inputs[name="name"]
 	color: white;
 	font-size: 16pt;
 	background-color: #35794B;
+	width: 100%;
 }
 #sidebar li a {
 	color: #e0efdd;
@@ -97,8 +156,8 @@ inputs[name="name"]
 #sidebar li:hover {
 	cursor: pointer;
 	background-color: #234214;
-	width: 275px;
-	transition: width .3s ease;
+	width: 105%;
+	transition: width 1s ease;
 	transition: background-color .15s ease-in;
 }
 #sidebar li.active {
@@ -107,10 +166,11 @@ inputs[name="name"]
 	font-weight: bold;
 }
 #sidebar li.active:hover {
-	width: 250px;
+	width: 100%;
 	cursor: default;
 }
 #main {
 	position: absolute;
-	left: 250px;
+	left: 20%;
+	top: 100px;
 }
