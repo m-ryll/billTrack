@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<title>Bill Track</title>
+		<title>greentility</title>
 		<meta charset="utf-8" />
 		<link rel="stylesheet" type="text/css" href="style.css" />
 		<link href='https://fonts.googleapis.com/css?family=Lato:400,700,400italic' rel='stylesheet' type='text/css'>	
@@ -66,10 +66,12 @@
 							var object = results[i];
 							var sidebarList = document.querySelector("#sidebar ul");
 							var newListItem = document.createElement("li");
+							var newLinkItem = document.createElement("a");
+							newLinkItem.setAttribute("href", "./bill.html");
 							var newText = document.createTextNode(object.get("name"));
-							newListItem.appendChild(newText);
+							newLinkItem.appendChild(newText);
+							newListItem.appendChild(newLinkItem);
 							sidebarList.insertBefore(newListItem, document.querySelector("#newBill"));
-
 						}
 					},
 					error: function(error) {
@@ -114,6 +116,5 @@
 				</form>
 			</div>
 		</div>
-
 	</body>
 </html>
