@@ -7,16 +7,26 @@
 		<link href='https://fonts.googleapis.com/css?family=Lato:400,700,400italic' rel='stylesheet' type='text/css'>	
 		<link href='https://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
 		<script type="text/javascript" src="https://www.parsecdn.com/js/parse-1.4.2.min.js"></script>		
+<<<<<<< HEAD
 		<script src="script.js"></script>
 		<script type="text/javascript">
 	        function handleAddBill(AddBillForm) {
 	            var billType = AddBillForm.querySelector("select[name=type]").value;
 	            var billName = AddBillForm.querySelector("input[name=name]").value;
+=======
+		<script type="text/javascript" src="script.js"></script>
+		<script type="text/javascript">
+	        function handleAddBill(AddBillForm) {
+	        	debugger;
+	            var billType = AddBillForm.querySelector("select[name=type].value");
+	            var billName = AddBillForm.querySelector("input[name=name].value");
+>>>>>>> origin/master
 
 	            if(billName == ""){
 	            	billName = billType;
 	            }
 
+<<<<<<< HEAD
 	            console.log("info: " + billName + " " + billType);
 	            var Bills = Parse.Object.extend("Bills");
 	            var myBills = new Bills();
@@ -36,6 +46,16 @@
 						console.log('Failed to create new object, with error code: ' + error.message);
 					}
 				});
+=======
+	            
+	            var table = new Parse.Query(Bills);
+	            table.set("name", billName);
+	            table.set("type", billType);
+	       
+	            console.log("info: ");
+
+	            
+>>>>>>> origin/master
 	        }
 
 	        function AddBillInit() {
@@ -55,6 +75,7 @@
 	                e.preventDefault();
 	                return false;
 	            });
+<<<<<<< HEAD
 
 	            var myBills = Parse.Object.extend("Bills");
 	            var query = new Parse.Query(myBills);
@@ -76,6 +97,8 @@
 						alert("Error: " + error.code + " " + error.message);
 					}
 				});
+=======
+>>>>>>> origin/master
 	        }
 	        window.onload = AddBillInit;
 		</script>
@@ -108,9 +131,15 @@
 						<option value="Loan">Loan</option>
 						<option value="Other">Other</option>
 					</select><br />
+<<<<<<< HEAD
 					<label for="name">Name:<label><br />
 					<input type="text" name="name" /><br />
 					<input id="addBillSubmit" type="submit" value="Create Bill" />
+=======
+					<label for="name">Name:<label>
+					<input type="text" name="name">
+					<input type="submit" id="addBillSubmit" value="Create Bill" />
+>>>>>>> origin/master
 				</form>
 			</div>
 		</div>
