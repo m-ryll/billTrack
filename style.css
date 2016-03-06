@@ -22,6 +22,11 @@ a, a:hover, a:active, a:focus, a:visited {
 	font-size: 35pt;
 	margin-top: 15px;
 }
+#bigLogo {
+	text-align: center;
+	font-size: 72pt;
+	font-family: 'Lobster', cursive;;
+}
 header {
 	width: 80%;
 	height: 100px;
@@ -119,6 +124,12 @@ input[type="submit"]:focus {
 	color: #35794B;
 	width: 450px;
 }
+#centered img {
+	text-align: center;
+}
+#centered p, #centered label {
+	text-align: left;
+}
 #centered h1 {
 	color: #35794B;
 	text-align: center;
@@ -146,6 +157,7 @@ input[type="submit"]:focus {
 	background-color: #35794B;
 	top: 100px;
 	bottom: 0;
+	height: 100%;
 }
 #sidebar li {
 	list-style-type: none;
@@ -166,7 +178,7 @@ input[type="submit"]:focus {
 	background-color: #234214;
 	transition: background-color .15s ease-in;
 }
-#sidebar li.active {
+#sidebar li.active a, #sidebar li.active {
 	background-color: #e0efdd;
 	color: #35794B;
 	font-weight: bold;

@@ -6,11 +6,28 @@
 		<link rel="stylesheet" type="text/css" href="style.css" />
 		<link href='https://fonts.googleapis.com/css?family=Lato:400,700,400italic' rel='stylesheet' type='text/css'>	
 		<link href='https://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
-		<script type="text/javascript" src="https://www.parsecdn.com/js/parse-1.4.2.min.js"></script>		
+		<script type="text/javascript" src="https://www.parsecdn.com/js/parse-1.4.2.min.js"></script>
+		<script src="Chart.min.js"></script>		
 		<script src="script.js"></script>
 		<script type="text/javascript">
 			var averageData;
 			var averageText;
+			var data = {
+			    labels: ["January", "February", "March", "April", "May", "June", "July"],
+			    datasets: [
+			        {
+			            label: "My First dataset",
+			            fillColor: "rgba(220,220,220,0.2)",
+			            strokeColor: "rgba(220,220,220,1)",
+			            pointColor: "rgba(220,220,220,1)",
+			            pointStrokeColor: "#fff",
+			            pointHighlightFill: "#fff",
+			            pointHighlightStroke: "rgba(220,220,220,1)",
+			            data: [65, 59, 80, 81, 56, 55, 40]
+			        }
+			    ]
+			};
+			var billId = getUrlVars()["id"];
 			function BillInit() {
 				Parse.initialize("FsgP7xe2NyaWPGWQocZBErGeHZgTrQg6ohYAx4BX", "D2KxvroTInGt3aW4SEmovGOTr8U6x1BksU6Jhpiw");
 				var logOutButton = document.querySelector("#logOutButton");
@@ -37,6 +54,9 @@
 							var object = results[i];
 							var sidebarList = document.querySelector("#sidebar ul");
 							var newListItem = document.createElement("li");
+							if (object.id == billId) {
+								newListItem.setAttribute("class", "active");
+							}
 							var newLinkItem = document.createElement("a");
 							newLinkItem.setAttribute("href", "./bill.php?id=" + object.id);
 							var newText = document.createTextNode(object.get("name"));
@@ -49,7 +69,6 @@
 						alert("Error: " + error.code + " " + error.message);
 					}
 				});
-				var billId = getUrlVars()["id"];
 				var average = 0;
 				var sum = 0;
 				var mySmallBills = Parse.Object.extend("SmallBills");
@@ -93,6 +112,13 @@
 				link.setAttribute("href", "./addMonthlyBill.php?id=" + billId);
 				link.appendChild(text);
 				document.querySelector("#main").appendChild(link);
+
+				// Make a line chart.
+				
+				var ctx = document.getElementById("myChart").getContext("2d");
+				var myLineChart = new Chart(ctx).Line(data, {
+					bezierCurve: true
+				});
 			}
 
 			window.onload = BillInit;
@@ -114,6 +140,7 @@
 				</ul>
 			</div>
 			<div id="main">
+				<canvas id="myChart" width="400" height="400"></canvas>
 				<table>
 					<thead>
 						<tr>
