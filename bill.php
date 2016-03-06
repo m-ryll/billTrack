@@ -1,7 +1,7 @@
 <!DOCUMENT html>
 <html lang="en">
 	<head>
-		<title>greentility</title>
+		<title>Bill | Greentility</title>
 		<meta charset="utf-8" />
 		<link rel="stylesheet" type="text/css" href="style.css" />
 		<link href='https://fonts.googleapis.com/css?family=Lato:400,700,400italic' rel='stylesheet' type='text/css'>	
