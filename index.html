@@ -15,6 +15,7 @@
 				Parse.initialize("FsgP7xe2NyaWPGWQocZBErGeHZgTrQg6ohYAx4BX", "D2KxvroTInGt3aW4SEmovGOTr8U6x1BksU6Jhpiw");
 				var logOutButton = document.querySelector("#logOutButton");
 				var currentUser = Parse.User.current();
+				
 				logOutButton.onclick = function(){
 					Parse.User.logOut();
 					window.location.href = "./home.html";
@@ -22,7 +23,13 @@
 
 				var myBills = Parse.Object.extend("Bills");
 	            var query = new Parse.Query(myBills);
-	            query.equalTo("userId", currentUser.id);
+	            if(currentUser){
+	            	query.equalTo("userId", currentUser.id);
+	            }
+	            else{
+	            	window.location.href = "./home.html";
+	     			throw new Error("Must be logged in!");
+	            }
 				query.find({
 					success: function(results) {
 						// Do something with the returned Parse.Object values

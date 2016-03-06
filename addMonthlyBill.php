@@ -113,7 +113,14 @@
 				var currentUser = Parse.User.current();
 				myBills = Parse.Object.extend("Bills");
 	            var query = new Parse.Query(myBills);
-	            query.equalTo("userId", currentUser.id);
+	            if(currentUser){
+	            	query.equalTo("userId", currentUser.id);
+	            }
+	            else{
+	            	window.location.href = "./home.html";
+	     			throw new Error("Must be logged in!");
+	            }
+				que
 				query.find({
 					success: function(results) {
 						// Do something with the returned Parse.Object values

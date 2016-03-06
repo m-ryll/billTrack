@@ -16,7 +16,14 @@
 				var currentUser = Parse.User.current();
 				var myBills = Parse.Object.extend("Bills");
 	            var query = new Parse.Query(myBills);
-	            query.equalTo("userId", currentUser.id);
+	            if(currentUser){
+	            	query.equalTo("userId", currentUser.id);
+	            }
+	            else{
+	            	window.location.href = "./home.html";
+	            	throw new Error("Must be logged in!");
+
+	            }
 				query.find({
 					success: function(results) {
 						// Do something with the returned Parse.Object values
@@ -52,7 +59,7 @@
 							var dateText = document.createTextNode(object.get("date"));
 							dateData.appendChild(dateText);
 							var costData = document.createElement("td");
-							var costText = document.createTextNode(object.get("cost"));
+							var costText = document.createTextNode("$" + object.get("cost"));
 							costData.appendChild(costText);
 							var row = document.createElement("tr");
 							row.appendChild(dateData);
@@ -64,7 +71,7 @@
 							if(i == results.length - 1){
 								average = sum/results.length;
 								averageData = document.createElement("p");
-								averageText = document.createTextNode("Average monthly cost: " + Math.round(average * 100) / 100);	
+								averageText = document.createTextNode("Average monthly cost: $" + Math.round(average * 100) / 100);	
 							}
 						}
 						averageData.appendChild(averageText);
