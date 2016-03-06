@@ -34,6 +34,39 @@
 						alert("Error: " + error.code + " " + error.message);
 					}
 				});
+				var billId = getUrlVars()["id"];
+
+				var mySmallBills = Parse.Object.extend("SmallBills");
+	            var query = new Parse.Query(mySmallBills);
+	            query.equalTo("billId", billId);
+				query.find({
+					success: function(results) {
+						// Do something with the returned Parse.Object values
+						for (var i = 0; i < results.length; i++) {
+							var object = results[i];
+							var dateData = document.createElement("td");
+							var dateText = document.createTextNode(object.get("date"));
+							dateData.appendChild(dateText);
+							var costData = document.createElement("td");
+							var costText = document.createTextNode(object.get("cost"));
+							costData.appendChild(costText);
+							var row = document.createElement("tr");
+							row.appendChild(dateData);
+							row.appendChild(costData);
+							var tbody = document.querySelector("tbody");
+							tbody.appendChild(row);
+						}
+					},
+					error: function(error) {
+						alert("Error: " + error.code + " " + error.message);
+					}
+				});
+
+				var link = document.createElement("a");
+				var text = document.createTextNode("add this month's bill");
+				link.setAttribute("href", "./addMonthlyBill.php?id=" + billId);
+				link.appendChild(text);
+				document.querySelector("#main").appendChild(link);
 			}
 
 			window.onload = BillInit;
@@ -55,10 +88,16 @@
 				</ul>
 			</div>
 			<div id="main">
-				<?php
-				// The value of the variable name is found
-				echo "<h1>id: " . $_GET["id"] . "</h1>";
-				?>
+				<table>
+					<thead>
+						<tr>
+							<th>Date</th>
+							<th>Cost</th>
+						</tr>	
+					</thead>
+					<tbody>
+					</tbody>
+				</table>
 			</div>
 		</div>
 	</body>
