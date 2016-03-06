@@ -12,7 +12,9 @@
 	<body>
 		<div id="container">
 			<div id="logo">
-                <h2>greentility</h2>
+                <a href="home.html">
+                	<h2>greentility</h2>
+                </a>
             </div>
 			<header>
 				<ul id="homeMenu">

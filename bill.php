@@ -13,6 +13,12 @@
 			var averageText;
 			function BillInit() {
 				Parse.initialize("FsgP7xe2NyaWPGWQocZBErGeHZgTrQg6ohYAx4BX", "D2KxvroTInGt3aW4SEmovGOTr8U6x1BksU6Jhpiw");
+				var logOutButton = document.querySelector("#logOutButton");
+				logOutButton.onclick = function(){
+					Parse.User.logOut();
+					window.location.href = "./home.html";
+					console.log("clicked!");
+				}; 
 				var currentUser = Parse.User.current();
 				var myBills = Parse.Object.extend("Bills");
 	            var query = new Parse.Query(myBills);

@@ -6,6 +6,9 @@ body {
 	font-family: 'Lato', sans-serif;
 	background-color: #e0efdd;
 }
+a, a:hover, a:active, a:focus, a:visited {
+	text-decoration: none;
+}
 #logo {
 	width: 20%;
 	height: 100px;
@@ -202,4 +205,13 @@ p {
 	margin: 15px 0;
 	font-size: 13pt;
 	line-height: 1.5em;
+}
+
+table {
+	background-color: #A6CE95;
+	border-collapse: collapse;
+}
+td, th {
+	padding: 10px;
+	border: 1px solid #35794B;
 }
