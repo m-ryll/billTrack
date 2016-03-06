@@ -198,3 +198,8 @@ input[type="submit"]:focus {
 .grid-item--width2 { 
 	width: 300px; 
 }
+p {
+	margin: 15px 0;
+	font-size: 13pt;
+	line-height: 1.5em;
+}
