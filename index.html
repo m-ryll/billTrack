@@ -30,8 +30,12 @@
 	            	window.location.href = "./home.html";
 	     			throw new Error("Must be logged in!");
 	            }
+	            /*var totalCost = 0;
+	            var billTotals = [];
+	            var bills = [];*/
 				query.find({
 					success: function(results) {
+						//billTypeCount = results.length;
 						// Do something with the returned Parse.Object values
 						for (var i = 0; i < results.length; i++) {
 							var object = results[i];
@@ -49,6 +53,23 @@
 						alert("Error: " + error.code + " " + error.message);
 					}
 				});
+
+				// will eventually be for pie chart
+				/*var SmallBills = Parse.Object.extend("SmallBills");
+				var q = new Parse.Query(SmallBills);
+				q.find({
+				success: function(results2){
+					var sum = 0;
+					for(var k = 0; k < results2.length; k++){
+						sum += results2[k].get("cost");
+
+						}
+						billTotals.push(sum);
+					},
+					error: function(error) {
+						alert("Error: " + error.code + " " + error.message);
+					}
+				});*/
 
 				// Create chart with Chart.js.
 				// Get the context of the canvas element we want to select
@@ -78,6 +99,14 @@
 				var myPieChart = new Chart(ctx2).Doughnut(data);
 				var ctx3 = document.getElementById("thirdChart").getContext("2d");
 				var myPieChart = new Chart(ctx3).Doughnut(data);
+
+				//Pie chart stuff
+				/*console.log(bills);
+				console.log(billTotals);
+				for(var i = 0; i < billTotals.length; i++){
+					totalCost += billTotals[i];
+				}
+				console.log(totalCost);*/
 
 				// Masonry
 				var elem = document.querySelector('.grid');

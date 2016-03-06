@@ -120,7 +120,7 @@
 	            	window.location.href = "./home.html";
 	     			throw new Error("Must be logged in!");
 	            }
-				que
+				
 				query.find({
 					success: function(results) {
 						// Do something with the returned Parse.Object values
