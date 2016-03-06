@@ -18,13 +18,17 @@
 				<ul id="homeMenu">
 					<li><a href="#">Features</a></li>
 					<li><a href="#">About</a></li>
-					<li><a href="contact.html">Contact</a></li>
+					<li><a class="activeLink" href="#">Contact</a></li>
 				</ul>
 				<ul id="homeButtons">
 					<li><a href="signup.html">Sign Up</a></li>
 					<li><a href="login.html">Log In</a></li>
 				</ul>
 			</header>
+			<div id="centered">
+				<h1>Thanks!</h1>
+				<p>Your message has been sent. You should receive a reply shortly!</p>
+			</div>
 		</div>
 	</body>
 </html>

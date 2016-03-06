@@ -18,13 +18,26 @@
 				<ul id="homeMenu">
 					<li><a href="#">Features</a></li>
 					<li><a href="#">About</a></li>
-					<li><a href="contact.html">Contact</a></li>
+					<li><a class="activeLink" href="#">Contact</a></li>
 				</ul>
 				<ul id="homeButtons">
 					<li><a href="signup.html">Sign Up</a></li>
 					<li><a href="login.html">Log In</a></li>
 				</ul>
 			</header>
+			<div id="centered">
+				<h1>Contact Us</h1>
+				<form id="contactForm" action="contact.php" method="POST">
+					<label for="name">Name</label>
+					<input type="text" name="name" /><br />
+					<label for="email">Email</label>
+					<input type="text" name="email" /><br />
+					<label for="message">Message</label>
+					<textarea rows="5" name="message" /></textarea>
+					<p class="error"></p>
+					<input id="contactSubmit" type="submit" value="Send">
+				</form>
+			</div>
 		</div>
 	</body>
 </html>

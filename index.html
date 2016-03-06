@@ -6,7 +6,9 @@
 		<link rel="stylesheet" type="text/css" href="style.css" />
 		<link href='https://fonts.googleapis.com/css?family=Lato:400,700,400italic' rel='stylesheet' type='text/css'>	
 		<link href='https://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
-		<script type="text/javascript" src="https://www.parsecdn.com/js/parse-1.4.2.min.js"></script>		
+		<script type="text/javascript" src="https://www.parsecdn.com/js/parse-1.4.2.min.js"></script>	
+		<script src="https://npmcdn.com/masonry-layout@4.0/dist/masonry.pkgd.min.js"></script>
+		<script src="Chart.min.js"></script>
 		<script type="text/javascript" src="script.js"></script>
 		<script type="text/javascript">
 			function indexInit() {
@@ -40,6 +42,44 @@
 						alert("Error: " + error.code + " " + error.message);
 					}
 				});
+
+				// Create chart with Chart.js.
+				// Get the context of the canvas element we want to select
+				var data = [
+				    {
+				        value: 300,
+				        color:"#F7464A",
+				        highlight: "#FF5A5E",
+				        label: "Red"
+				    },
+				    {
+				        value: 50,
+				        color: "#46BFBD",
+				        highlight: "#5AD3D1",
+				        label: "Green"
+				    },
+				    {
+				        value: 100,
+				        color: "#FDB45C",
+				        highlight: "#FFC870",
+				        label: "Yellow"
+				    }
+				];
+				var ctx = document.getElementById("myChart").getContext("2d");
+				var myPieChart = new Chart(ctx).Doughnut(data);
+				var ctx2 = document.getElementById("secondChart").getContext("2d");
+				var myPieChart = new Chart(ctx2).Doughnut(data);
+				var ctx3 = document.getElementById("thirdChart").getContext("2d");
+				var myPieChart = new Chart(ctx3).Doughnut(data);
+
+				// Masonry
+				var elem = document.querySelector('.grid');
+				var msnry = new Masonry( elem, {
+				  // options
+				  itemSelector: '.grid-item',
+				  columnWidth: 300,
+				  fitWidth: true
+				});
 			}
 			window.onload = indexInit;
 		</script>
@@ -60,9 +100,18 @@
 				</ul>
 			</div>
 			<div id="main">
-				
+				<div class="grid">
+					<div class="grid-item grid-item--width2">
+						<canvas id="myChart" width="300" height="300"></canvas>
+					</div>
+					<div class="grid-item grid-item--width2">
+						<canvas id="secondChart" width="300" height="300"></canvas>
+					</div>
+					<div class="grid-item grid-item--width2">
+						<canvas id="thirdChart" width="300" height="300"></canvas>
+					</div>
+				</div>
 			</div>
 		</div>
-
 	</body>
 </html>
