@@ -54,6 +54,7 @@
 
 	            if (!currentUser) {
 	                window.location.href = "./home.html";
+	                throw new Error("Must be logged in!");
 	            }
 
 	            AddBillSubmit.addEventListener("click", function(e) {
