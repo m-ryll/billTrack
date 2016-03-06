@@ -22,7 +22,22 @@
 				</ul>
 			</div>
 			<div id="main">
-
+				<form id="addBillForm" action="#" method="POST">
+					<label for="type">Bill Type:</label>
+					<select name="type">
+						<option value="Electric">Electric</option>
+						<option value="Gas">Gas</option>
+						<option value="Water">Water</option>
+						<option value="Car Payment">Car Payment</option>
+						<option value="Cable and Internet">Cable and Internet</option>
+						<option value="Cell Phone">Cell Phone</option>
+						<option value="Loan">Loan</option>
+						<option value="Other">Other</option>
+					</select><br />
+					<label for="name">Name:<label>
+					<input type="text" name="name">
+					<input type="submit" value="Create Bill" />
+				</form>
 			</div>
 		</div>
 

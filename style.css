@@ -1,8 +1,3 @@
-/*
-	COLOR PALETTE
-	#35794B
-*/
-
 * {
 	padding: 0;
 	margin: 0;
@@ -14,6 +9,20 @@ header {
 	width: 100vw;
 	height: 100px;
 	background: #35794B;
+}
+#homeMenu {
+	display: inline;
+	position: absolute;
+}
+#homeMenu li {
+	display: inline;
+	list-style-type: none;
+	margin: 20px 20px;
+}
+#homeMenu li a {
+	text-decoration: none;
+	color: white;
+	font-size: 14pt;
 }
 .button {
 	display: inline;
@@ -100,4 +109,8 @@ inputs[name="name"]
 #sidebar li.active:hover {
 	width: 250px;
 	cursor: default;
+}
+#main {
+	position: absolute;
+	left: 250px;
 }
