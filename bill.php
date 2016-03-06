@@ -9,6 +9,8 @@
 		<script type="text/javascript" src="https://www.parsecdn.com/js/parse-1.4.2.min.js"></script>		
 		<script src="script.js"></script>
 		<script type="text/javascript">
+			var averageData;
+			var averageText;
 			function BillInit() {
 				Parse.initialize("FsgP7xe2NyaWPGWQocZBErGeHZgTrQg6ohYAx4BX", "D2KxvroTInGt3aW4SEmovGOTr8U6x1BksU6Jhpiw");
 				var currentUser = Parse.User.current();
@@ -35,7 +37,8 @@
 					}
 				});
 				var billId = getUrlVars()["id"];
-
+				var average = 0;
+				var sum = 0;
 				var mySmallBills = Parse.Object.extend("SmallBills");
 	            var query = new Parse.Query(mySmallBills);
 	            query.equalTo("billId", billId);
@@ -43,6 +46,7 @@
 					success: function(results) {
 						// Do something with the returned Parse.Object values
 						for (var i = 0; i < results.length; i++) {
+
 							var object = results[i];
 							var dateData = document.createElement("td");
 							var dateText = document.createTextNode(object.get("date"));
@@ -55,7 +59,16 @@
 							row.appendChild(costData);
 							var tbody = document.querySelector("tbody");
 							tbody.appendChild(row);
+							
+							sum += parseFloat(object.get("cost"));
+							if(i == results.length - 1){
+								average = sum/results.length;
+								averageData = document.createElement("p");
+								averageText = document.createTextNode("Average monthly cost: " + Math.round(average * 100) / 100);	
+							}
 						}
+						averageData.appendChild(averageText);
+						document.querySelector("#main").appendChild(averageData);
 					},
 					error: function(error) {
 						alert("Error: " + error.code + " " + error.message);
