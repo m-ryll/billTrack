@@ -118,7 +118,6 @@ function init() {
 	average(user1.bills);*/
 
 	//document.querySelector("#add").onclick = addbill;
-  	
 }
 
 window.onload = init;

@@ -6,14 +6,23 @@
 		<link rel="stylesheet" type="text/css" href="style.css" />
 		<link href='https://fonts.googleapis.com/css?family=Lato:400,700,400italic' rel='stylesheet' type='text/css'>	
 		<script type="text/javascript" src="https://www.parsecdn.com/js/parse-1.4.2.min.js"></script>		
-		<script src="script.js"></script>
+		<script type="text/javascript" src="script.js"></script>
+		<script type="text/javascript">
+			function indexInit() {
+				Parse.initialize("FsgP7xe2NyaWPGWQocZBErGeHZgTrQg6ohYAx4BX", "D2KxvroTInGt3aW4SEmovGOTr8U6x1BksU6Jhpiw");
+				var usermenu = document.querySelector("#usermenu");
+				usermenu.innerHTML = Parse.User.current().getUsername();
+			}
+
+			window.onload = indexInit;
+		</script>
 	</head>
 	<body>
 		<div id="container">
 			<header>
 				<div id="imgTemp"></div>
 				<p id="pageTitle">Dashboard</p>
-				<p id="userMenuTemp">user menu</p>
+				<div id="usermenu"></div>
 			</header>
 			<div id="sidebar">
 				<ul>
